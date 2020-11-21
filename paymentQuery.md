@@ -45,3 +45,14 @@ WHERE fee.admin_fee = (SELECT MIN(fee.admin_fee)
 			WHERE pc.code = fee.payment_channel_code)
 
 
+
+e. Create any indexes that you think are necessary for the transaction table and please explain why. Please also consider storage size and writing speed in determining the indexes. 
+1. Make an user index for transaction table will reduce the time query needed
+2. Payment channel index also useful for data reporting for channel
+
+
+
+f. Write any concern you have regarding this database schema and please explain why (for example if you thought of any possibly unhandled cases, unnormalized or unoptimized tables).
+
+1. For a good logging, its better if we have different table for success payment and failed payment
+2. Item id should be made a separate table to reduce memory usage
